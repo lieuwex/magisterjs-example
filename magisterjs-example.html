@@ -1,0 +1,30 @@
+<head>
+<title>magisterjs-example</title>
+</head>
+
+<body>
+	<h1>Welcome to magister.js!</h1>
+
+	{{> main}}
+</body>
+
+<template name="main">
+	<input type="text" id="schoolname" placeholder="schoolname"/><br>
+	<input type="text" id="username" placeholder="username"/><br>
+	<input type="password" id="password" placeholder="password"/><br>
+	<button>GO!</button>
+
+	{{#with name}}
+		<div>Hey, {{this}}!</div>
+	{{/with}}
+
+	{{#with appointments}}
+		{{#if error}}
+			<div>woops.</div>
+		{{else}}
+			{{#each result}}
+				<div>{{this}}</div>
+			{{/each}}
+		{{/if}}
+	{{/with}}
+</template>
