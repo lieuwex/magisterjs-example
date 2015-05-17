@@ -6,8 +6,12 @@ if (Meteor.isClient) {
 		});
 	}
 
-	function fetchAppointments (schoolname, username, password) {
-		new Magister.Magister(schoolname, username, password).ready(function (error) {
+	function fetchData (schoolname, username, password) {
+		new Magister.Magister({
+			school: schoolname,
+			username: username,
+			password: password
+		}).ready(function (error) {
 			if (error) {
 				setAppointments(e, null);
 			} else {
@@ -44,7 +48,7 @@ if (Meteor.isClient) {
 			var username = $("#username").val();
 			var password = $("#password").val();
 
-			fetchAppointments(schoolname, username, password);
+			fetchData(schoolname, username, password);
 		}
 	})
 }
